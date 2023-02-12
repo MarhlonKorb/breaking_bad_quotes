@@ -5,7 +5,7 @@ import 'modules/quotes/ui/pages/inicial_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DotEnv().load();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -16,10 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        appBarTheme: const AppBarTheme(backgroundColor: Color.fromRGBO(58, 100, 24, 0.935), shadowColor: Color(0x00000032)),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: Color.fromRGBO(58, 100, 24, 0.935),iconSize: 20),
+        
       ),
       debugShowCheckedModeBanner: false,
-      home:   InicialScreen(),
+      home:   const InicialPage(),
     );
   }
 }

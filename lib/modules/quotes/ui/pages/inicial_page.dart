@@ -1,12 +1,10 @@
+import 'package:breaking_bad_app/modules/quotes/ui/pages/quote_loading.dart';
 import 'package:flutter/material.dart';
-import '../../mock_data/character_mock_data.dart';
 
-class InicialScreen extends StatelessWidget {
-  InicialScreen({
+class InicialPage extends StatelessWidget {
+  const InicialPage({
     super.key,
   });
-
-  final charactersList = CharactersListMock().charactersList;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +13,9 @@ class InicialScreen extends StatelessWidget {
         title: const Text('Citações Breaking Bad'),
         centerTitle: true,
       ),
-      body: const Center(),
+      body: const Center(
+        child: QuoteLoadingState()
+      ),
     );
   }
 }

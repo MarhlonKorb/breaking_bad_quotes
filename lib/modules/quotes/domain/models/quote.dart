@@ -14,7 +14,6 @@ class Quote {
   factory Quote.fromMap(Map<String, dynamic> json) => Quote(
         author: json["author"],
         quote: json["quote"],
-        
     );
 
     Map<String, dynamic> toMap() => {

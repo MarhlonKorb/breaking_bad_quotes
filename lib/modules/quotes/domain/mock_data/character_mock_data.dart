@@ -1,4 +1,4 @@
-import 'package:breaking_bad_app/modules/quotes/infra/models/quote.dart';
+import 'package:breaking_bad_app/modules/quotes/domain/models/quote.dart';
 
 class CharactersListMock {
   final charactersList = [
