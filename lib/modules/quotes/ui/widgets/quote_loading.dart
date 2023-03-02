@@ -1,6 +1,8 @@
 import 'package:breaking_bad_app/modules/quotes/domain/services/quote_service.dart';
 import 'package:flutter/material.dart';
 
+import 'clip_react_image_character.dart';
+
 class QuoteLoadingState extends StatefulWidget {
   const QuoteLoadingState({super.key});
 
@@ -25,7 +27,7 @@ class QuoteLoadingStateState extends State<QuoteLoadingState> {
           if (snapshot.hasError) {
             return const Text('Erro ao carregar dados da API');
           }
-          if(snapshot.connectionState == ConnectionState.waiting){
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           }
           if (snapshot.hasData) {
@@ -35,9 +37,13 @@ class QuoteLoadingStateState extends State<QuoteLoadingState> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                     ClipReactImageCharacter(author: snapshot.data?.author),
                     Text(snapshot.data?.author ?? ''),
                     Text(snapshot.data?.quote ?? ''),
-                    FloatingActionButton(onPressed: () => setState(() {}), child: const Icon(Icons.chat),)
+                    FloatingActionButton(
+                      onPressed: () => setState(() {}),
+                      child: const Icon(Icons.chat),
+                    )
                   ],
                 ),
               ),
