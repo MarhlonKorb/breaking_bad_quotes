@@ -9,4 +9,5 @@ class NameAuthorConst {
   static const gusFring = "Gus Fring"; 
   static const skylerWhite = "Skyler White"; 
   static const thefly = "The fly"; 
+  static const badger = "Badger"; 
 }

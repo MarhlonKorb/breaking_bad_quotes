@@ -14,7 +14,7 @@ class ClipReactImageCharacter extends StatelessWidget {
     final widthDevicePixelRatio =
         MediaQuery.of(context).devicePixelRatio.toDouble() / 0.02;
     final heightDevicePixelRatio =
-        MediaQuery.of(context).devicePixelRatio.toDouble() / 0.015;
+        MediaQuery.of(context).devicePixelRatio.toDouble() / 0.010;
     return Container(
       constraints: const BoxConstraints(),
       child: FittedBox(

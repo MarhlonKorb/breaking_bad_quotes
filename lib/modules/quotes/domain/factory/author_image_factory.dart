@@ -23,6 +23,8 @@ class AuthorImageFactory extends NameAuthorConst {
         return "lib/modules/shared/assets/images/skyler.jpeg";
       case NameAuthorConst.thefly:
         return "lib/modules/shared/assets/images/saul.png";
+      case NameAuthorConst.badger:
+        return "lib/modules/shared/assets/images/badger.png";
 
       default:
         "Imagem não encontrada";
