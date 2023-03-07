@@ -1,7 +1,7 @@
 import 'package:breaking_bad_app/modules/quotes/domain/const/name_author_const.dart';
 
 class AuthorImageFactory extends NameAuthorConst {
-  String getPicturePathAuthor(String authorName) {
+  String getPathPictureAuthor(String authorName) {
     switch (authorName) {
       case NameAuthorConst.hankSchrader:
         return "lib/modules/shared/assets/images/hank.jpg";

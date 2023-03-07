@@ -1,6 +1,8 @@
 import 'package:breaking_bad_app/modules/quotes/domain/factory/author_image_factory.dart';
 import 'package:flutter/material.dart';
+import '../../utils/app_routes.dart';
 
+/// Widget responsável por montar a estrutura de imagem do personagem
 class ClipReactImageCharacter extends StatelessWidget {
   final String? author;
 
@@ -11,20 +13,21 @@ class ClipReactImageCharacter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widthDevicePixelRatio =
-        MediaQuery.of(context).devicePixelRatio.toDouble() / 0.02;
-    final heightDevicePixelRatio =
+    final widthDevice =
+        MediaQuery.of(context).devicePixelRatio.toDouble() / 0.015;
+    final heightDevice =
         MediaQuery.of(context).devicePixelRatio.toDouble() / 0.010;
-    return Container(
-      constraints: const BoxConstraints(),
-      child: FittedBox(
+
+    return SizedBox(
+      child: InkWell(
+        onTap: () => Navigator.of(context).pushNamed(AppRoutes.detailPage,
+            arguments: AuthorImageFactory().getPathPictureAuthor(author!)),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
           child: Image(
             image:
-                AssetImage(AuthorImageFactory().getPicturePathAuthor(author!)),
-            width: widthDevicePixelRatio,
-            height: heightDevicePixelRatio,
+                AssetImage(AuthorImageFactory().getPathPictureAuthor(author!)),
+            width: widthDevice,
+            height: heightDevice,
           ),
         ),
       ),

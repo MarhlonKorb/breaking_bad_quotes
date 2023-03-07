@@ -1,9 +1,9 @@
 import 'package:breaking_bad_app/modules/quotes/domain/services/quote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'clip_react_image_character.dart';
 
+/// Widget que carrega os dados da API para a montagem da página principal do app
 class QuoteLoadingData extends StatefulWidget {
   const QuoteLoadingData({super.key});
 
@@ -20,6 +20,7 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
   @override
   Widget build(BuildContext context) {
     final quoteService = QuoteService();
+
     return StreamBuilder(
       stream: quoteService.getQuote()!.asStream(),
       builder: (context, snapshot) {
@@ -32,15 +33,22 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
         if (snapshot.hasData) {
           return Padding(
             padding: const EdgeInsets.all(18.0),
-            child: SizedBox.expand(
-          
+            child: SizedBox(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                   ClipReactImageCharacter(author: snapshot.data?.author),
-                  Text(snapshot.data?.author ?? '', style:  GoogleFonts.rokkitt(fontSize: 22),
+                  ClipReactImageCharacter(author: snapshot.data?.author),
+                  Text(
+                    snapshot.data?.author ?? '',
+                    style: GoogleFonts.rokkitt(fontSize: 22),
                   ),
-                  Text(snapshot.data?.quote ?? '', style:  GoogleFonts.rokkitt(fontSize: 20,), textAlign: TextAlign.center,),
+                  Text(
+                    snapshot.data?.quote ?? '',
+                    style: GoogleFonts.rokkitt(
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                   FloatingActionButton(
                     onPressed: () => setState(() {}),
                     child: const Icon(Icons.chat),

@@ -1,3 +1,5 @@
+import 'package:breaking_bad_app/modules/quotes/ui/pages/detail_page.dart';
+import 'package:breaking_bad_app/modules/quotes/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home:   const InicialPage(),
+      routes:{ AppRoutes.detailPage: (ctx) =>    const DetailPage() ,}
     );
   }
 }
