@@ -1,5 +1,8 @@
+import 'package:breaking_bad_app/modules/quotes/domain/factory/author_image_factory.dart';
+import 'package:breaking_bad_app/modules/quotes/domain/factory/author_info_factory.dart';
 import 'package:breaking_bad_app/modules/quotes/ui/widgets/appbar_main.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Widget responsável pelos detalhes do personagem
 class DetailPage extends StatelessWidget {
@@ -10,7 +13,7 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imagePath = ModalRoute.of(context)!.settings.arguments as String;
+    final author = ModalRoute.of(context)!.settings.arguments as String;
     final widthDevicePixelRatio =
         MediaQuery.of(context).devicePixelRatio.toDouble() / 0.0;
 
@@ -21,7 +24,7 @@ class DetailPage extends StatelessWidget {
       appBar: const AppBarMain(),
       body: SizedBox(
         child: Hero(
-          tag: imagePath,
+          tag:  author,
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).pop(),
@@ -32,14 +35,18 @@ class DetailPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image(
-                      image: AssetImage(imagePath),
+                      image: AssetImage(AuthorImageFactory().getPathPictureAuthor(author)),
                       fit: BoxFit.scaleDown,
                       width: widthDevicePixelRatio,
                       height: heightDevice,
+                      
                     ),
-                    const Card(
-                      child: Text("data"),
-                    )
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Card(
+                        child: Text(style: GoogleFonts.rokkitt(fontSize: 20, wordSpacing: 3), AuthorInfoFactory().getInfoAuthor(author)),
+                                         ),
+                     )
                   ],
                 ),
               ),

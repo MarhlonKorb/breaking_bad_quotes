@@ -21,7 +21,7 @@ class ClipReactImageCharacter extends StatelessWidget {
     return SizedBox(
       child: InkWell(
         onTap: () => Navigator.of(context).pushNamed(AppRoutes.detailPage,
-            arguments: AuthorImageFactory().getPathPictureAuthor(author!)),
+            arguments: author!),
         child: ClipRRect(
           child: Image(
             image:
