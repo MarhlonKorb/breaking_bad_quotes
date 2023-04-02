@@ -1,6 +1,5 @@
 import 'package:breaking_bad_app/modules/quotes/domain/services/quote_service.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'clip_react_image_character.dart';
 
 /// Widget que carrega os dados da API para a montagem da página principal do app
@@ -20,7 +19,6 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
   @override
   Widget build(BuildContext context) {
     final quoteService = QuoteService();
-
     return StreamBuilder(
       stream: quoteService.getQuote()!.asStream(),
       builder: (context, snapshot) {
@@ -37,16 +35,15 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ClipReactImageCharacter(author: snapshot.data?.author),
+                  ClipReactImageCharacter(author: snapshot.data!.author!),
                   Text(
                     snapshot.data?.author ?? '',
-                    style: GoogleFonts.rokkitt(fontSize: 22),
+                    style: Theme.of(context).textTheme.titleMedium,
+    
                   ),
                   Text(
                     snapshot.data?.quote ?? '',
-                    style: GoogleFonts.rokkitt(
-                      fontSize: 20,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall,
                     textAlign: TextAlign.center,
                   ),
                   FloatingActionButton(

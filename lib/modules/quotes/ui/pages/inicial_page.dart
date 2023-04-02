@@ -10,7 +10,7 @@ class InicialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold( extendBody: true,
+    return const Scaffold(
       appBar:  AppBarMain(),
       body: Center(
         child: QuoteLoadingData()

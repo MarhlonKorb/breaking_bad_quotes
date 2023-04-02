@@ -1,8 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:breaking_bad_app/modules/quotes/domain/models/quote.dart';
-
 import 'package:breaking_bad_app/modules/quotes/domain/repositories/i_quotes_repository.dart';
-
 import '../../../config/environment.dart';
 
 class QuotesRepositoryApi extends IQuotesRepository {

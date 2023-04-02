@@ -4,11 +4,11 @@ import '../../utils/app_routes.dart';
 
 /// Widget responsável por montar a estrutura de imagem do personagem
 class ClipReactImageCharacter extends StatelessWidget {
-  final String? author;
+  final String author;
 
   const ClipReactImageCharacter({
     super.key,
-    this.author,
+    required this.author,
   });
 
   @override
@@ -21,11 +21,11 @@ class ClipReactImageCharacter extends StatelessWidget {
     return SizedBox(
       child: InkWell(
         onTap: () => Navigator.of(context).pushNamed(AppRoutes.detailPage,
-            arguments: author!),
+            arguments: author),
         child: ClipRRect(
           child: Image(
             image:
-                AssetImage(AuthorImageFactory().getPathPictureAuthor(author!)),
+                AssetImage(AuthorImageFactory().getPathPictureAuthor(author)),
             width: widthDevice,
             height: heightDevice,
           ),
