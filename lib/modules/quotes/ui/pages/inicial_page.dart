@@ -10,14 +10,23 @@ class InicialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar:  AppBarMain(),
-      body: Center(
-        child: QuoteLoadingData()
-      ),
+    return Scaffold(
+      appBar: const AppBarMain(),
+      drawer: Drawer(
+          child: ListView(
+        padding: const EdgeInsets.all(18),
+        children:  [
+          ListTile(
+            leading: const Text('Frases Favoritas'),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: const Text('About'),
+            onTap: (){},
+          ),
+        ],
+      )),
+      body: const Center(child: QuoteLoadingData()),
     );
   }
 }
-
-
-

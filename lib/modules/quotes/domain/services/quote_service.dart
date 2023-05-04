@@ -5,8 +5,7 @@ import '../models/quote.dart';
 class QuoteService {
   final quoteRepository = QuotesRepositoryApi();
 
-  Future<Quote>? getQuote(){
+  Future<Quote>? getQuote() {
     return quoteRepository.getQuote();
   }
-  
 }
