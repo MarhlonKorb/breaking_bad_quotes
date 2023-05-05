@@ -3,9 +3,9 @@ import 'package:breaking_bad_app/modules/quotes/infra/repositories/quotes_reposi
 import '../models/quote.dart';
 
 class QuoteService {
-  final quoteRepository = QuotesRepositoryApi();
+  final _quoteRepository = QuotesRepositoryApi();
 
   Future<Quote>? getQuote() {
-    return quoteRepository.getQuote();
+    return _quoteRepository.getQuote();
   }
 }

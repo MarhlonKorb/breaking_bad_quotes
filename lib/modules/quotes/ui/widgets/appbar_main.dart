@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarMain({super.key});
+  final String? title;
+  const AppBarMain({super.key, this.title, });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title:  const Text(
-          'Citações Breaking Bad',
-          // style: TextStyle(fontSize: Theme.of(context).textTheme.titleMedium!.fontSize),
+        title:  Text(
+         title ?? 'Frases Breaking Bad',
         ),
         centerTitle: true,
     );

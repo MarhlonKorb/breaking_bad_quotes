@@ -1,12 +1,11 @@
 import 'package:breaking_bad_app/modules/quotes/ui/pages/detail_page.dart';
+import 'package:breaking_bad_app/modules/quotes/ui/pages/quote_favorites_page.dart';
 import 'package:breaking_bad_app/modules/quotes/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import 'modules/quotes/domain/models/quote.dart';
-import 'modules/quotes/domain/models/quote_list.dart';
+import 'modules/quotes/domain/models/quote_provider.dart';
 import 'modules/quotes/ui/pages/inicial_page.dart';
 
 Future main() async {
@@ -22,8 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => Quote()),
-        ChangeNotifierProvider(create: (_) => QuoteList()),
+        ChangeNotifierProvider(create: (_) => QuoteProvider()),
       ],
       child: MaterialApp(
           theme: ThemeData(
@@ -43,7 +41,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: const InicialPage(),
           routes: {
+            AppRoutes.inicialPage: (context) => const InicialPage(),
             AppRoutes.detailPage: (context) => const DetailPage(),
+            AppRoutes.quotesFavoritesPage: (context) => const QuoteFavoritesPage(),
           }),
     );
   }

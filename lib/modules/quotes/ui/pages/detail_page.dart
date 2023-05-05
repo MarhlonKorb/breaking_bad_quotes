@@ -17,8 +17,6 @@ class DetailPage extends StatelessWidget {
 
     final heightDevice =
         MediaQuery.of(context).devicePixelRatio.toDouble() / 0.011;
-    // final heightDevice =
-        // MediaQuery.of(context).size.aspectRatio / 0.0028;
     return Scaffold(
       appBar: const AppBarMain(),
       body: Hero(
