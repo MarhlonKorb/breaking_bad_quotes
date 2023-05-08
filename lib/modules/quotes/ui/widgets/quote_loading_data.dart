@@ -1,6 +1,7 @@
 import 'package:breaking_bad_app/modules/quotes/domain/services/quote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../domain/models/quote.dart';
 import '../../domain/models/quote_provider.dart';
 import 'clip_react_image_character.dart';
 
@@ -29,7 +30,6 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
   Widget build(BuildContext context) {
     final quoteProvider = Provider.of<QuoteProvider>(context, listen: false);
 
-    final selecionado = false;
     return StreamBuilder(
       stream: quoteService.getQuote()!.asStream(),
       builder: (context, snapshot) {
@@ -66,25 +66,26 @@ class QuoteLoadingDataState extends State<QuoteLoadingData> {
                       InkWell(
                         onTap: () {
                           quoteProvider.setFavorite(snapshot.data!);
-                          quoteProvider.addQuote(snapshot.data!);
                         },
-                        child: Column(
-                          children: [
-                            Icon(
-                              snapshot.data!.isFavorite
-                                  ? Icons.star_rate
-                                  : Icons.star,
-                              color: const Color.fromRGBO(58, 100, 24, 0.935),
-                            ),
-                            Text(
-                              snapshot.data!.isFavorite
-                                  ? 'Desfavoritar'
-                                  : 'Favoritar',
-                              style: const TextStyle(
-                                color: Color.fromRGBO(58, 100, 24, 0.935),
+                        child: Consumer<QuoteProvider>(
+                          builder: (context, value, _) => Column(
+                            children: [
+                              Icon(
+                                snapshot.data!.isFavorite
+                                    ? Icons.star
+                                    : Icons.star_border,
+                                color: const Color.fromRGBO(58, 100, 24, 0.935),
                               ),
-                            ),
-                          ],
+                              Text(
+                                snapshot.data!.isFavorite
+                                    ? 'Desfavoritar'
+                                    : 'Favoritar',
+                                style: const TextStyle(
+                                  color: Color.fromRGBO(58, 100, 24, 0.935),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     ],

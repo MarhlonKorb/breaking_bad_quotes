@@ -11,22 +11,24 @@ class QuoteFavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final quoteProviderList =
-        Provider.of<QuoteProvider>(context).favoriteQuotes;
+    final quoteProvider =
+        Provider.of<QuoteProvider>(context);
 
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: const AppBarMain(title: 'Frases favoritas'),
-      body: quoteProviderList.isNotEmpty
+      body: quoteProvider.favoriteQuotes.isNotEmpty
           ? ListView.builder(
-              itemCount: quoteProviderList.length,
+              itemCount: quoteProvider.favoriteQuotes.length,
               itemBuilder: (context, index) {
                 return Slidable(
                   endActionPane: ActionPane(
                     motion: const DrawerMotion(),
                     children: [
                       SlidableAction(
-                        onPressed: (BuildContext context) {},
+                        onPressed: (BuildContext context) {
+                          quoteProvider.removeQuoteFromList(quoteProvider.favoriteQuotes.elementAt(index));
+                        },
                         icon: Icons.dangerous,
                         label: 'Excluir',
                       ),
@@ -43,12 +45,12 @@ class QuoteFavoritesPage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    quoteProviderList.elementAt(index).author!),
+                                    quoteProvider.favoriteQuotes.elementAt(index).author!),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    quoteProviderList.elementAt(index).quote!),
+                                    quoteProvider.favoriteQuotes.elementAt(index).quote!),
                               ),
                             ],
                           ),
@@ -58,7 +60,7 @@ class QuoteFavoritesPage extends StatelessWidget {
                   ),
                 );
 
-              })
+              },)
           : const Center(
               child: Text('Nenhum item adicionado aos favoritos.'),
             ),

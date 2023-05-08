@@ -10,7 +10,7 @@ class QuoteProvider with ChangeNotifier {
       _quotes.where((quote) => quote.isFavorite).toList();
 
   /// Adiciona uma citação a lista de favoritas
-  void addQuote(Quote quote) {
+  void _addQuote(Quote quote) {
     if (!_quotes.contains(quote)) {
       _quotes.add(quote);
     } else {
@@ -21,6 +21,14 @@ class QuoteProvider with ChangeNotifier {
 
   void setFavorite(Quote quote) {
     quote.isFavorite = !quote.isFavorite;
+    _addQuote(quote);
     notifyListeners();
+  }
+
+  void removeQuoteFromList(Quote quote){
+    if(_quotes.contains(quote)){
+      _quotes.remove(quote);
+    }
+      notifyListeners();
   }
 }
